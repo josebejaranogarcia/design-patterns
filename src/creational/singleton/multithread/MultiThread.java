@@ -1,4 +1,4 @@
-package creationals.singleton;
+package creational.singleton.multithread;
 
 public class MultiThread {
 

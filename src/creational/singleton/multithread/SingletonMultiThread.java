@@ -1,4 +1,4 @@
-package creationals.singleton;
+package creational.singleton.multithread;
 
 
 /*With double-checked locking (DCL) and lazy initialization

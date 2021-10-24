@@ -1,4 +1,4 @@
-package creationals.singleton;
+package creational.singleton.singlethread;
 /*Singleton Pattern*/
 
 public class Singleton {
