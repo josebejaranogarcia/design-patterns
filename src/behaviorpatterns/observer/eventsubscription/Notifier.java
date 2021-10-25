@@ -13,6 +13,8 @@ public class Notifier {
         eventManager = new EventManager("open", "write");
         eventManager.subscribe("open", new OpenFileSubscriber());
         eventManager.subscribe("write", new SaveFileSubscriber());
+     //   eventManager.subscribe("open", new OpenFileSubscriber());
+        eventManager.subscribedEvents.forEach ((k, v)->System.out.println( "key"+ k + " value: "+v)) ;
     }
 
     public void openFile(File file) { eventManager.notify("open", file); }

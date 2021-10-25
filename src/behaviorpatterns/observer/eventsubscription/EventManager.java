@@ -3,10 +3,7 @@ package behaviorpatterns.observer.eventsubscription;
 import behaviorpatterns.observer.eventsubscription.suscribers.Subscriber;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class EventManager {
 
@@ -14,8 +11,8 @@ public class EventManager {
     List<Subscriber> subscribers;
 
     public EventManager(String... eventTypes) {
-        for (String type : eventTypes)
-            this.subscribedEvents.put (type, new ArrayList<>());
+        Arrays.stream(eventTypes).
+                forEach(type-> this.subscribedEvents.put (type, new ArrayList<>()));
     }
 
 
