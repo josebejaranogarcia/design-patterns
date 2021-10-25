@@ -1,29 +1,23 @@
 package behaviorpatterns.observer.eventsubscription;
 
-import behaviorpatterns.observer.eventsubscription.listeners.OpenFileListener;
+import behaviorpatterns.observer.eventsubscription.suscribers.OpenFileSubscriber;
+import behaviorpatterns.observer.eventsubscription.suscribers.SaveFileSubscriber;
 
 import java.io.File;
 
 public class Notifier {
 
-    public EventManager eventManager;
-    private File file;
+    private EventManager eventManager;
 
     public Notifier() {
-        this.eventManager = new EventManager("open", "save");
-        this.eventManager.subscribe("open", new OpenFileListener());
-   //     eventManager.listeners.forEach((k,v) -> System.out.println("Key: " + k + ": Value: " + v));
-
+        eventManager = new EventManager("open", "write");
+        eventManager.subscribe("open", new OpenFileSubscriber());
+        eventManager.subscribe("write", new SaveFileSubscriber());
     }
 
-    public void openFile(String filePath) {
-        this.file = new File(filePath);
-        eventManager.notify("open", file);
-    }
-
-    public void saveFile() throws Exception {
-        if (this.file != null)  eventManager.notify("save", file);
-            throw new Exception("it cant save the document");
+    public void openFile(File file) { eventManager.notify("open", file); }
+    public void writeFile(File file)  {
+        eventManager.notify("write", file);
     }
 
 }

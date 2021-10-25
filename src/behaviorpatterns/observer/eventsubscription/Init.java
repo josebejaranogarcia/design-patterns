@@ -1,17 +1,15 @@
 package behaviorpatterns.observer.eventsubscription;
 
-import behaviorpatterns.observer.eventsubscription.listeners.OpenFileListener;
+import java.io.File;
 
 public class Init {
+
+    static final String PATH="src/behaviorpatterns/observer/eventsubscription/testFile.txt";
 
     public static void main(String[] args) {
 
         Notifier notifier = new Notifier();
-        try {
-            notifier.openFile("src/behaviorpatterns/observer/eventsubscription/testFile.txt");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        notifier.writeFile(new File(PATH));
+        notifier.openFile(new File(PATH));
     }
-
 }
